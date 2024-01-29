@@ -1,9 +1,13 @@
-use serde::{Deserialize, Serialize};
 use crate::serde::empty_string_as_none;
+use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Colors {
     /// Overall foreground color. This color is only used if not overridden by a component.
-    #[serde(default, rename = "foreground", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "foreground",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub foreground: Option<String>,
     /// Overall foreground for disabled elements. This color is only used if not overridden by a component.
     #[serde(
@@ -27,7 +31,11 @@ pub struct Colors {
     )]
     pub description_foreground: Option<String>,
     /// Overall border color for focused elements. This color is only used if not overridden by a component.
-    #[serde(default, rename = "focusBorder", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "focusBorder",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub focus_border: Option<String>,
     /// An extra border around elements to separate them from others for greater contrast.
     #[serde(
@@ -285,7 +293,11 @@ pub struct InputColors {
     )]
     pub foreground: Option<String>,
     /// Input box border.
-    #[serde(default, rename = "input.border", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "input.border",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub border: Option<String>,
     /// Input box foreground color for placeholder text.
     #[serde(
@@ -1466,7 +1478,11 @@ pub struct QuickInputListColors {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MenuColors {
     /// Border color of menus.
-    #[serde(default, rename = "menu.border", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "menu.border",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub border: Option<String>,
     /// Foreground color of menu items.
     #[serde(
@@ -1621,7 +1637,11 @@ pub struct MergeColors {
     )]
     pub common_content_background: Option<String>,
     /// Border color on headers and the splitter in inline merge-conflicts.
-    #[serde(default, rename = "merge.border", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "merge.border",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub border: Option<String>,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -1785,13 +1805,25 @@ pub struct ChartsColors {
     )]
     pub foreground: Option<String>,
     /// The color used for horizontal lines in charts.
-    #[serde(default, rename = "charts.lines", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "charts.lines",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub lines: Option<String>,
     /// The red color used in chart visualizations.
-    #[serde(default, rename = "charts.red", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "charts.red",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub red: Option<String>,
     /// The blue color used in chart visualizations.
-    #[serde(default, rename = "charts.blue", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "charts.blue",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub blue: Option<String>,
     /// The yellow color used in chart visualizations.
     #[serde(
@@ -1808,7 +1840,11 @@ pub struct ChartsColors {
     )]
     pub orange: Option<String>,
     /// The green color used in chart visualizations.
-    #[serde(default, rename = "charts.green", deserialize_with = "empty_string_as_none")]
+    #[serde(
+        default,
+        rename = "charts.green",
+        deserialize_with = "empty_string_as_none"
+    )]
     pub green: Option<String>,
     /// The purple color used in chart visualizations.
     #[serde(
