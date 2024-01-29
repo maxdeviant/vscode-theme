@@ -61,7 +61,12 @@ fn main() -> Result<()> {
 
     let mut output_file = File::create("crates/vscode_theme/src/generated/theme.rs")?;
 
-    output_file.write_all(prettyplease::unparse(&file).as_bytes())?;
+    let contents = format!(
+        "// This is a generated file.\n// Do not modify by hand!\n\n{}",
+        prettyplease::unparse(&file)
+    );
+
+    output_file.write_all(contents.as_bytes())?;
 
     Ok(())
 }

@@ -1,3 +1,6 @@
+// This is a generated file.
+// Do not modify by hand!
+
 use crate::serde::empty_string_as_none;
 use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
