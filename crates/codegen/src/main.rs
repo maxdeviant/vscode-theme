@@ -45,7 +45,9 @@ fn main() -> Result<()> {
     }
 
     let module = quote! {
-        use serde::{Serialize, Deserialize};
+        use serde::{Deserialize, Serialize};
+
+        use crate::serde::empty_string_as_none;
 
         #[derive(Debug, Clone, Serialize, Deserialize)]
         pub struct Colors {
@@ -192,7 +194,7 @@ fn color_field(group: Option<String>, color: ThemeColor) -> TokenStream {
 
     quote! {
         #[doc = #description]
-        #[serde(rename = #json_name)]
+        #[serde(default, rename = #json_name, deserialize_with = "empty_string_as_none")]
         pub #name: Option<String>
     }
 }
