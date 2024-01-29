@@ -18,8 +18,11 @@ struct ThemeColor {
 }
 
 fn main() -> Result<()> {
-    let color_registry_src = include_str!("../../../colorRegistry.ts");
-    let colors = parse_registry_colors(&color_registry_src)?;
+    // let color_registry_src = include_str!("../../../colorRegistry.ts");
+    // let colors = parse_registry_colors(&color_registry_src)?;
+
+    let theme_color_src = include_str!("../theme-color.md");
+    let colors = parse_theme_colors(&theme_color_src)?;
     let colors = group_colors(colors);
 
     let mut color_fields = Vec::new();
@@ -85,6 +88,27 @@ fn group_colors(colors: IndexMap<String, ThemeColor>) -> IndexMap<Option<String>
     }
 
     grouped_colors
+}
+
+fn parse_theme_colors(src: &str) -> Result<IndexMap<String, ThemeColor>> {
+    let mut colors = IndexMap::new();
+
+    let lines = src.lines();
+
+    for line in lines {
+        if line.starts_with("- `") && line.contains("`:") {
+            if let Some((name, description)) = line.split_once("`:") {
+                let name = name.trim_start_matches("- `").to_string();
+                let description = description.trim().to_string();
+
+                let color = ThemeColor { name, description };
+
+                colors.insert(color.name.clone(), color);
+            }
+        }
+    }
+
+    Ok(colors)
 }
 
 fn parse_registry_colors(ts_src: &str) -> Result<IndexMap<String, ThemeColor>> {
